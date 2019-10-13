@@ -15,35 +15,7 @@
     <title>Map</title>
   </head>
   <body onload="initialize()">
-      
-<!--
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="navdiv">
-  <ul class="navbar-nav">
-      <li class="nav-item">
-      <img src="version_beta-01.png">
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="donate.html">Donate</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="helpline.html">Helpline</a>
-    </li>
-  </ul>
-</div>
-</nav>
--->
-<!--
-      <div class="navbar1">
-          <img src="version_beta-01.png">
-          <h2>Efficient Flood Rescue</h2>
-          <a href="donate.html" class="a1">Donate</a>
-          <a href="helpline.html" class="a1">Helpline</a>
-      </div>
--->
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.htm">
@@ -71,34 +43,41 @@
       <br>
       <h2>Efficient Flood Rescue</h2>
       <br>
-    <div id="map">
+        <div id="map">
         </div>
       <br>
-      <div id="maincontent">
-      <div id="searchbox">
-      Name of Location :&nbsp;
-      <input type="text" id="searchplace" name="searchplace" value="" onkeydown="search(event);">
-          <input type="button" id="searchbutton" onclick="searchMap()" value="Locate">
-          </div>
-      <br>
-      <div id="NW">
-          <b style="font-size: 22px">
-      North West Corner :</b> <br><br>
-          Latitude : <input type="text" name="minLatitude" id="minLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
-          
-            Longitude : <input type="text" name="minLongitude" id="minLongitude" value="" style="width:120px;">
-      </div>
-      <br>
-      <div id="SE">
-          <b style="font-size: 22px">South East Corner :</b>  <br><br>
-          Latitude : <input type="text" name="maxLatitude" id="maxLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
-          Longitude : <input type="text" name="maxLongitude" id="maxLongitude" value="" style="width:120px;">
-      </div>
-      <br>
-      <div id="btn">
-      <input id="btn1" type="button" onclick="setCoords()" value="Compute" title="retrieve elevation data">
-          </div>
-    </div>
+        <div id="maincontent">
+            <div id="searchbox">
+            Name of Location :&nbsp;
+            <input type="text" id="searchplace" name="searchplace" value="" onkeydown="search(event);">
+                <input type="button" id="searchbutton" onclick="searchMap()" value="Locate">
+                </div>
+            <br>
+            <div id="NW">
+                <b style="font-size: 22px">
+            North West Corner :</b> <br><br>
+                Latitude : <input type="text" name="minLatitude" id="minLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    Longitude : <input type="text" name="minLongitude" id="minLongitude" value="" style="width:120px;">
+            </div>
+            <br>
+            <div id="SE">
+                <b style="font-size: 22px">South East Corner :</b>  <br><br>
+                Latitude : <input type="text" name="maxLatitude" id="maxLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
+                Longitude : <input type="text" name="maxLongitude" id="maxLongitude" value="" style="width:120px;">
+            </div>
+            <br>
+            <div id="btn">
+                <input id="btn1" type="button" onclick="setCoords()" value="Compute" title="retrieve elevation data">
+                <input id="btn1" type="button" onclick="clearMap('all')" value="Clear" title="Clear Map">
+
+            </div>
+            <div id="key">
+                <div id="keys" style="float: left;">Lowest Prone Area</div>
+                <div id="keys" style="float: right;">Highest Prone Area</div>
+                <div id="color"></div>
+            </div>
+        </div>
       <br>
 <script>
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,8 +217,6 @@ b = new google.maps.LatLngBounds(
     map: map,
     bounds: b    
   });
-// fitMap();
-  //document.getElementById("clearRectangleButton").style.display = "";
  } 
 }
     
@@ -249,7 +226,8 @@ if (what == "rectangle" || what == "all"){
 if (rectangle.length!=0){
 rectangle.setMap(null);
 rectangle = new Array();
-}}
+}
+}
 
 if (what == "marker" || what == "all"){
 for (iM in markers){
@@ -263,6 +241,10 @@ for (iL in polyLineArray){
 polyLineArray[iL].setMap(null);
 }
 polyLineArray = [];
+document.getElementById("maxLatitude").value = "";
+document.getElementById("minLatitude").value = "";
+document.getElementById("maxLongitude").value = "";
+document.getElementById("minLongitude").value = "";
 }
 
 if (what == "samplepoints" || what == 'all'){
@@ -273,8 +255,6 @@ samplePoints = [];
 sampleCoordinates = [];
 }
 }
-
-// document.getElementById("clearMapMenu").options[0].selected = true;
 
     
 function fitMap(){
@@ -310,13 +290,6 @@ function getData(){
                     pointsWE = 10;
                     pointsNS = Math.round(Math.abs(LatDiff/LongDiff) * 10);
                 }
-                // if(LongDiff < LatDiff) {
-                //     var pointsNS = 8;
-                //     var pointsWE = Math.round((parseFloat(LatDiff)/parseFloat(LongDiff))) * 8;
-                // } else {
-                //     var pointsWE = 8;
-                //     var pointsNS = Math.round((parseFloat(LongDiff)/parseFloat(LatDiff))) * 8;
-                // }
                 stepsizeLong = parseFloat(LongDiff)/(pointsWE-1);
                 stepsizeLat = parseFloat(LatDiff)/(pointsNS-1);
                 
@@ -373,15 +346,8 @@ function getData(){
                 });
             }
 
-
-
-
-
-
-
-
-
-function calculateContour(){
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function calculateContour(){
             clearMap('samplepoints'); //remove existing lines
             for (thisLine in polyLineArray){
             polyLineArray[thisLine].setMap(null); //replot empty
@@ -445,10 +411,6 @@ function calculateContour(){
                     s = avg/3;
                 }
                 step = s;
-                alert(LatDiff + "\n" + LongDiff);
-                // if (document.getElementById('unitFeet').checked == true) {
-                //     step = parseFloat(document.getElementById("intervalContour").value) * 0.3048;
-                // }
                 nstep = (max - min) / step;
                 for (var iLevel = 0; iLevel < nstep; iLevel++) {
                     level[iLevel] = parseFloat(min + step * iLevel);
@@ -504,17 +466,6 @@ var plotResolutionY = 500;
                     LongDiff = (+$('#maxLongitude').val() - +$('#minLongitude').val());
                     LatDiff = (+$('#maxLatitude').val() - +$('#minLatitude').val());
                 
-                /*
-                    if (LongDiff >= LatDiff){
-                    plotResolutionX = plotResolutionX;
-                    plotResolutionY = Math.round(plotResolutionX/LongDiff*LatDiff);
-                    }
-                    else{
-                    plotResolutionY = plotResolutionY;
-                    plotResolutionX = Math.round(plotResolutionY/LatDiff*LongDiff);
-                    }
-                */
-                
                     normalizedX = ((output[iPath][iVertex].y-1)/(width-1))*plotResolutionX;
                     normalizedY = ((output[iPath][iVertex].x-1)/(height-1))*plotResolutionY;
                     
@@ -535,7 +486,6 @@ var plotResolutionY = 500;
                     // if(document.getElementById("plotLines").checked){
                     //plot polyline
                     svgString += '<polyline fill="none" stroke="rgb(' + rgb + ')" stroke-width="2" points="' + thesePoints + '" />'
-                    //kmlString += '<Placemark><name>Contour</name><description>Contour</description><styleUrl>Contour</styleUrl><LineString><extrude>1</extrude><tessellate>1</tessellate><altitudeMode>absolute</altitudeMode><coordinates>' + thesePointsKML + '</coordinates></LineString></Placemark>';
                     kmlString += '<Placemark><name>Contour</name><description>Contour</description><LineString><coordinates>' + thesePointsKML + '</coordinates></LineString></Placemark>';
                     // }
                 
@@ -558,13 +508,6 @@ var plotResolutionY = 500;
                 
             }
             svgString += '<rect x="0" y="0" width="' + plotResolutionX + '" height="' + plotResolutionY + '" fill="none" stroke="black" stroke-width="1"/>';
-            /*
-            document.getElementById("contour").innerHTML = '<svg id="contourPlot" width="' + plotResolutionX + 'px" height="' + plotResolutionY + 'px" version="1.1" xmlns="http://www.w3.org/2000/svg">' 
-            + svgString + '<rect x="0" y="0" width="' + plotResolutionX + '" height="' + plotResolutionY + '" fill="none" stroke="black" stroke-width="1">' + "\n" + '</svg>';
-
-            document.getElementById("copySVGcontour").value = document.getElementById("contour").innerHTML;*/
-            //document.getElementById("levels").value = levelString;
-
 
             //print contour legend
             legendHeight = 500;
@@ -595,12 +538,6 @@ var plotResolutionY = 500;
             meanLat = (+$('#maxLatitude').val() - +$('#minLatitude').val())/2;
             stepsizeLong = parseFloat(LongDiff)/(width-1);
             stepsizeLat = parseFloat(LatDiff)/(height-1);
-            //console.log(LongDiff,stepsizeLong,width,Math.round(LongDiff));
-            // document.getElementById("WEstep").innerHTML = meter2unit(Math.round(getDistanceFromLatLonInM(meanLat,+$('#maxLongitude').val(),meanLat,+$('#minLongitude').val())/(width-1)),true);
-            // document.getElementById("NSstep").innerHTML = meter2unit(Math.round(getDistanceFromLatLonInM(+$('#maxLatitude').val(),meanLong,+$('#minLatitude').val(),meanLong)/(height-1)),true);
-
-            //document.getElementById("WEstep").innerHTML = Math.round(getDistanceFromLatLonInM(meanLat,0,meanLat,stepsizeLong)*1)/1;
-            //document.getElementById("NSstep").innerHTML = Math.round(getDistanceFromLatLonInM(0,meanLong,stepsizeLat,meanLong));
 
             for (iLine in polyLineArray){
                 polyLineArray[iLine].setMap(map);
@@ -630,36 +567,6 @@ function value2RGB(value,min,max){
 
     else{
     thisNormalizedValue = parseInt((value-min)/(max-min)*1023); //0 to 1023 n=1024
-
-
-    // if (thisNormalizedValue>767){
-    // //from red to yellow
-    // thisR = 1023 - thisNormalizedValue;
-    // thisG = 1023 - thisNormalizedValue; //0 to 255
-    // thisB = 1023 - thisNormalizedValue;
-    // }
-
-    // if (thisNormalizedValue>511 && thisNormalizedValue<768){
-    // //from yellow to green
-
-    // thisR = thisNormalizedValue - 512; //0 to 255
-    // thisG = thisNormalizedValue - 512;
-    // thisB = thisNormalizedValue - 512;
-    // }
-
-    // if (thisNormalizedValue>255 && thisNormalizedValue<512){
-    // //from green to cyan
-    // thisR = 511 - thisNormalizedValue;
-    // thisG = 511 - thisNormalizedValue;
-    // thisB = 511 - thisNormalizedValue; //0 to 255
-    // }
-
-    // if (thisNormalizedValue<256){
-    // //from cyan to blue
-    // thisR = thisNormalizedValue;
-    // thisG = thisNormalizedValue; // 0 to 255
-    // thisB = thisNormalizedValue;
-    // }
 
     if (thisNormalizedValue>767){
     //from red to yellow
