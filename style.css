@@ -1,16 +1,16 @@
 *{
     padding: 0;
     margin: 0;
+    font-size: 20px;
 }
 #map{
     height: 500px;
-    width: 100%;
+    width: 70%;
+    margin: auto;
 }
-h1{
-    text-align: center;
-}
+
 #searchplace{
-    width: 150px;
+    width: 200px;
 }
 #searchbox,#SE,#NW{
     text-align: center;
@@ -23,4 +23,42 @@ h1{
 }
 #btn1{
     padding: 5px;
+}
+#sticky-footer {
+      flex-shrink: none;
+      }
+.navbar{
+    height: 55px;
+}
+.navdiv{
+    text-align: right;
+}
+.navbar-nav{
+    margin-left:100%;
+    font-size: 20px;
+}
+.nav-item{
+    margin-right: 20px;
+}
+
+input{
+    font-size: 14px;
+    padding: 2px;
+}
+///////////////////////////
+.container{
+    height: 140px;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.nav-link{
+    
+    font-size: 22px;
+}
+img{
+    margin-top:10px;
+    }
+
+h2{
+    text-align: center;
 }
