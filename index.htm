@@ -15,35 +15,91 @@
     <title>Map</title>
   </head>
   <body onload="initialize()">
+      
+<!--
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="navdiv">
+  <ul class="navbar-nav">
+      <li class="nav-item">
+      <img src="version_beta-01.png">
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="donate.html">Donate</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="helpline.html">Helpline</a>
+    </li>
+  </ul>
+</div>
+</nav>
+-->
+<!--
+      <div class="navbar1">
+          <img src="version_beta-01.png">
+          <h2>Efficient Flood Rescue</h2>
+          <a href="donate.html" class="a1">Donate</a>
+          <a href="helpline.html" class="a1">Helpline</a>
+      </div>
+-->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.htm">
+          <img src="version_beta-01.png" alt="logo" height="50" width="100">
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.htm">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="donate.html">Donate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="helpline.html">Helpline</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
       <br>
-      <h1>Efficient Flood Rescue</h1>
+      <h2>Efficient Flood Rescue</h2>
       <br>
     <div id="map">
         </div>
       <br>
+      <div id="maincontent">
       <div id="searchbox">
-      Name of Location:
+      Name of Location :&nbsp;
       <input type="text" id="searchplace" name="searchplace" value="" onkeydown="search(event);">
           <input type="button" id="searchbutton" onclick="searchMap()" value="Locate">
           </div>
       <br>
       <div id="NW">
-      North West Corner :<br>
-          Latitude : <input type="text" name="minLatitude" id="minLatitude" value="" style="width:120px;">
-          Longitude :<input type="text" name="minLongitude" id="minLongitude" value="" style="width:120px;">
+          <b style="font-size: 22px">
+      North West Corner :</b> <br><br>
+          Latitude : <input type="text" name="minLatitude" id="minLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
+          
+            Longitude : <input type="text" name="minLongitude" id="minLongitude" value="" style="width:120px;">
       </div>
       <br>
       <div id="SE">
-      South East Corner :<br>
-          Latitude : <input type="text" name="maxLatitude" id="maxLatitude" value="" style="width:120px;">
+          <b style="font-size: 22px">South East Corner :</b>  <br><br>
+          Latitude : <input type="text" name="maxLatitude" id="maxLatitude" value="" style="width:120px;">&nbsp;&nbsp;&nbsp;&nbsp;
           Longitude : <input type="text" name="maxLongitude" id="maxLongitude" value="" style="width:120px;">
       </div>
       <br>
       <div id="btn">
-      <input id="btn1" type="button" onclick="setCoords()" value="Get Latitude and Longitude" title="retrieve elevation data">
+      <input id="btn1" type="button" onclick="setCoords()" value="Compute" title="retrieve elevation data">
           </div>
-
-        <input type="button" onclick="clearMap('all')" value="abcde">
+    </div>
+      <br>
 <script>
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -672,5 +728,10 @@ return n;
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+          <small>Developed by : WeTeam, NIT Raipur</small>
+        </div>
+</footer>
   </body>
 </html>
