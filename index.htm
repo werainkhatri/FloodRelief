@@ -42,6 +42,8 @@
       <div id="btn">
       <input id="btn1" type="button" onclick="setCoords()" value="Get Latitude and Longitude" title="retrieve elevation data">
           </div>
+
+        <input type="button" onclick="clearMap('all')" value="abcde">
 <script>
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,100 +54,9 @@
     var op = '';
     var polyLineArray = new Array();
     var samplePoints = []; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function getSampleCoordinates(){
-clearMap('samplepoints');
-if ($('#output').val() == ""){
-	var pointsNS = parseInt($('#pointsNS').val());
-	var pointsWE = parseInt($('#pointsWE').val());
-	}
-	else{	
-	var pointsNS = height;
-	var pointsWE = width;
-	}
-
-	LongDiff = +$('#maxLongitude').val() - +$('#minLongitude').val();
-	LatDiff = +$('#maxLatitude').val() - +$('#minLatitude').val();
-	
-	stepsizeLong = parseFloat(LongDiff)/(pointsWE-1);
-	stepsizeLat = parseFloat(LatDiff)/(pointsNS-1);
-	
-	var radius = Math.min(Math.round(getDistanceFromLatLonInM(meanLat,+$('#maxLongitude').val(),meanLat,+$('#minLongitude').val())/(width-1))/4,	
-	Math.round(getDistanceFromLatLonInM(+$('#maxLatitude').val(),meanLong,+$('#minLatitude').val(),meanLong)/(height-1))/8);
-	//console.log(radius);
-	
-	for(iLat=0; iLat<pointsNS; iLat++) {
-	thisLatitude = +$('#minLatitude').val() + iLat*stepsizeLat;	
-	
-	for(iLong=0; iLong<pointsWE; iLong++) {
-	thisValue = +$('#minLongitude').val() + iLong*stepsizeLong;
-	sampleCoordinates.push(thisLatitude + "," + thisValue);	
-	}
-	}
-	//console.log(sampleCoordinates);
-	
-	for (thisPoint in sampleCoordinates){
-	var c = sampleCoordinates[thisPoint].split(",");
-	var thisCenter = new google.maps.LatLng(c[0], c[1])
-	
-	var samplePointOptions = {
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      //fillColor: '#FF0000',
-      //fillOpacity: 0.35,
-      map: map,
-      center: thisCenter,
-      radius: radius}
-	  //radius: 2}
-
-	samplePoints.push(new google.maps.Circle(samplePointOptions));
-	
-	//samplePoints[samplePoints.length-1].setMap(map);
-	}
-	//console.log(samplePoints);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var width = 0;
+    var height = 0;
+    var so=0.25, sw=1, s=0.05;
 
 
 function initialize() {
@@ -205,22 +116,14 @@ function search(event) {
 if (rectangle.length!=0){
 NWc = markers[0].getPosition();
 SEc = markers[1].getPosition();
-/*
-b = new google.maps.LatLngBounds(
-	new google.maps.LatLng(Math.max(NWc.ob,SEc.ob), Math.min(NWc.pb,SEc.pb)),
-    new google.maps.LatLng(Math.min(NWc.ob,SEc.ob), Math.max(NWc.pb,SEc.pb)));*/
 
 b = new google.maps.LatLngBounds(
 	new google.maps.LatLng(Math.max(NWc.lat('get'),SEc.lat('get')), Math.min(NWc.lng('get'),SEc.lng('get'))),
     new google.maps.LatLng(Math.min(NWc.lat('get'),SEc.lat('get')), Math.max(NWc.lng('get'),SEc.lng('get'))));	
 	
-	
 rectangle.setBounds(b);
-}
-else
-{
-    drawRectangle();
-}
+}else
+{drawRectangle();}
 }} 
     
 function setCoords() {
@@ -292,12 +195,12 @@ rectangle.setMap(null);
 rectangle = new Array();
 }}
 
-// if (what == "marker" || what == "all"){
-// for (iM in markers){
-// markers[iM].setMap(null);
-// }
-// markers = [];
-// }
+if (what == "marker" || what == "all"){
+for (iM in markers){
+markers[iM].setMap(null);
+}
+markers = [];
+}
 
 if (what == "contour" || what == "all"){
 for (iL in polyLineArray){
@@ -344,6 +247,13 @@ function getData(){
                 
                 var pointsNS = 10;
                 var pointsWE = 10;
+                if(LongDiff > LatDiff) {
+                    pointsNS = 10;
+                    pointsWE = Math.round(Math.abs(LongDiff/LatDiff) * 10);
+                } else {
+                    pointsWE = 10;
+                    pointsNS = Math.round(Math.abs(LatDiff/LongDiff) * 10);
+                }
                 // if(LongDiff < LatDiff) {
                 //     var pointsNS = 8;
                 //     var pointsWE = Math.round((parseFloat(LatDiff)/parseFloat(LongDiff))) * 8;
@@ -390,6 +300,7 @@ function getData(){
                         console.log(results)
                         if (results[0]) {
                                 var c = 0;
+                                op = ''
                             for (iRes in results){
                             var c = c + 1;
                             var del = "\t";
@@ -460,8 +371,25 @@ function calculateContour(){
             //////////////
             var level = new Array();
 
+            width = matrix[0].length;
+            height = matrix.length;
             // if (document.getElementById("levelInterval").checked) {
-                step = 0.5;
+                var avg = (Math.abs(LatDiff) + Math.abs(LongDiff)) / 2;
+                if(avg <= 0.10) {
+                    so = (0.1-avg)/0.1*0.2 + 0.25;
+                    sw = avg/0.1 + 2;
+                    s = avg/0.1*0.02 + 0.04;
+                } else if(avg <= 0.6) {
+                    so = 0.15;
+                    sw = avg/0.6*1.5 + 1.5;
+                    s = avg/0.6*0.2 + 0.1;
+                } else {
+                    so = 0.5
+                    sw = 3;
+                    s = avg/3;
+                }
+                step = s;
+                alert(LatDiff + "\n" + LongDiff);
                 // if (document.getElementById('unitFeet').checked == true) {
                 //     step = parseFloat(document.getElementById("intervalContour").value) * 0.3048;
                 // }
@@ -471,8 +399,6 @@ function calculateContour(){
                 }
             // }
 
-            width = matrix[0].length;
-            height = matrix.length;
             //alert(width + " " + height);
             //convert to numbers
 for (var iX = 0; iX<height; iX++) {
@@ -563,8 +489,8 @@ var plotResolutionY = 500;
             flightPath = new google.maps.Polyline({
                 path: flightPlanCoordinates,
                 strokeColor: '#' + rgbToHex(rgb.split(',')[0],rgb.split(',')[1],rgb.split(',')[2]),
-                strokeOpacity: 0.5,
-                strokeWeight: 1.5   
+                strokeOpacity: so,
+                strokeWeight: sw
             });
                 
                 //alert(flightPath.getPath())
