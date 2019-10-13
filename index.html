@@ -73,8 +73,8 @@
 
             </div>
             <div id="key">
-                <div id="keys" style="float: left;">Lowest Prone Area</div>
-                <div id="keys" style="float: right;">Highest Prone Area</div>
+                <div id="keys" style="float: left;">Highest Prone Area</div>
+                <div id="keys" style="float: right;">Lowest Prone Area</div>
                 <div id="color"></div>
             </div>
         </div>
@@ -403,8 +403,8 @@ function getData(){
                     s = avg/0.1*0.02 + 0.04;
                 } else if(avg <= 0.6) {
                     so = 0.15;
-                    sw = avg/0.6*1.5 + 1.5;
-                    s = avg/0.6*0.2 + 0.1;
+                    sw = avg/0.6*1.5 + 1;
+                    s = avg/0.6 + 0.2;
                 } else {
                     so = 0.5
                     sw = 3;
