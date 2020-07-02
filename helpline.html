@@ -10,13 +10,13 @@
     
     <title>Helpline</title>
       <style>
-          body{
+          *{
              margin: 0;
               padding: 0;
-              background-image: url(5ceec863479ed.image.jpg);
-              background-repeat: no-repeat;
-              background-size: cover;
-            
+              font-size: 20px;
+          }
+          a {
+            font-size: 20px;
           }
 .nav-link{
     margin-right: 20px;
@@ -35,8 +35,6 @@ h2{
           #header{
               font-size: 70px;
               color: white;
-              margin-left: 20%;
-              margin-top: 5%;
               font-weight: bold;
               
           }
@@ -87,11 +85,16 @@ h2{
         	color:#00bfff;
         	transition:background 0.5s;   
         }
-
-        .second-portion
-        {
-        	margin-top:50px; 
+        .wrapper {
+          display:flex;
+          flex-wrap:wrap;
+          justify-content: center;
+          align-items: center;
+          background-image: url(5ceec863479ed.image.jpg);
+              background-repeat: no-repeat;
+              background-size: cover;
         }
+        
 
 		        @import "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css";
 		@import "http://fonts.googleapis.com/css?family=Roboto:400,500";
@@ -129,77 +132,54 @@ h2{
 			}
 		}
     small {
-    font-size: 120%;
+    font-size: 0.75em;
     }
       </style>
   </head>
   <body>
-<!--
-    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.htm">
-          <img src="version_beta-01.png" alt="">
-        </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.htm">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="donate.html">Donate</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="helpline.html">Helpline</a>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
--->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.htm">
-          <img src="version_beta-01.png" alt="logo" height="50" width="100">
-        </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item ">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="donate.html">Donate</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="helpline.html">Helpline</a>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container second-portion" style="margin-top: 190px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.htm">
+              <img src="version_beta-01.png" alt="logo" height="30em" width="60em">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.html" style="font-size:0.75em">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="donate.html" style="font-size:0.75em">Donate</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="helpline.html" style="font-size:0.75em">Helpline</a>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
+  </nav>
+<div class="wrapper" style="height:100vh;text-align:center">
+    
+<div class="second-portion" style="padding-top:auto; padding-bottom: auto; padding:1em;">
 	<div class="row">
         <!-- Boxes de Acoes -->
     	<div class="col-xs-12 col-sm-6 col-lg-4">
 			<div class="box">							
 				<div class="icon">
-					<div class="image"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+					<div class="image"><i class="fa fa-globe" aria-hidden="true"></i></div>
 					<div class="info">
                        <br>
-						<h3 class="title">MAIL &amp; WEBSITE</h3>
+						<h3 class="title">WEBSITE</h3>
 						<p>
-							<i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;
-                            <a href="https://gov.bih.nic.in">https://gov.bih.nic.in</a>
+							
+                            <a href="https://gov.bih.nic.in">Bihar Flood Relief</a>
 							<br>
 							<br>
-							<i class="fa fa-globe" aria-hidden="true"></i> &nbsp; <a href="http://www.cmrf.bih.nic.in/users/home.aspx">http://www.cmrf.bih.nic.in/users/home.aspx</a>
+							<a href="https://cm.assam.gov.in/relieffund.php">Assam Flood Relief</a>
 						</p>
 					
 					</div>
@@ -242,16 +222,16 @@ Pincode : 800001
 						</p>
 					</div>
 				</div>
-				<div class="space"></div>
 			</div> 
 		</div>		   
 	    
 	</div>
 </div>
-      <footer class="py-4 bg-dark text-white-50 navbar-fixed-bottom" style="margin-top:524px">
-        <div class="container text-center">
-          <small>Developed by : WeTeam, NIT Raipur</small>
-        </div>
+</div>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center">
+      <small>Developed By : WeTeam, NIT Raipur 2018</small>
+  </div>
 </footer>
          
 

@@ -7,37 +7,34 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>Donate Here</title>
       <style>
-      .navbar{
-    height: 55px;
-}
-.nav-link{
-    margin-right: 20px;
-    font-size: 22px;
-}
-img{
-    margin-top:10px;
-    }
-          .bgimg{
-              background: url("5ceec863479ed.image.jpg");
-              background-repeat: no-repeat;
-              background-size: cover;
-              width:100vw;
-              height:100vh;
-              font-size: 70px;
-              color:white;
-          }
+        .img-half {
+          background-image: url("5ceec863479ed.image.jpg");
+          width:50vw;
+          height:50vh;
+          margin:2em;
+        }
+        .text-half {
+          margin:2em;
+          padding:4em;
+          text-align: center;
+        }
               
-          }
+          .wrapper {
+          display:flex;
+          flex-wrap:wrap;
+          height:80vh;
+          align-items: center;
+        }
+        .flexbox {
+          padding:0!important;
+        }
 h2{
     text-align: center;
 }
-          body{
-             margin: 0;
-              padding: 0;
-          }
+     
           .donatebtn{
               border-radius: 4px;
               text-decoration: none;
@@ -48,59 +45,60 @@ h2{
               padding: 10px;
               }
           .quote{
-              font-size: 80px;
-              padding-top: 70px;
-              padding-left: 130px;
-              
+              font-size: 2em;
             }
-          .btn1{
-             margin-left: 20%;
-             padding: 10px;
-          }
           
       </style>
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.htm">
-          <img src="version_beta-01.png" alt="logo" height="50" width="100">
-        </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="donate.html">Donate</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="helpline.html">Helpline</a>
-        </li>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
-      <div class="bgimg">
-          <div class="quote">
-           Support A Cause<br>
-      You Care About
-              </div>
-           <div class="btn1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="index.htm">
+              <img src="version_beta-01.png" alt="logo" height="30em" width="60em">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="index.html" style="font-size:0.75em">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="donate.html" style="font-size:0.75em">Donate</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="helpline.html" style="font-size:0.75em">Helpline</a>
+                  </li>
+
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <div class="wrapper">
+  <div class="flexbox">
+      <div class="img-half">
+      </div>
+      <div class="text-half">
+        <div class="quote">
+          Support A Cause<br>
+     You Care About!
+             </div>
+             <br>
+             <div class="btn1">
               <a href="http://www.cmrf.bih.nic.in/users/quickdonate.aspx" target="_blank">
           <button type="submit" name="Donate" class="donatebtn" >Donate Now!</button></a>
               </div>
-     
-      </div>
-      <footer id="sticky-footer" class="py-4 bg-dark text-white-50" style="">
+      </div>     
+  </div>
+</div>
+
+      <footer id="sticky-footer" class="py-2 bg-dark text-white-50">
         <div class="container text-center">
-          <small style="font-size: 120%;">Developed by : WeTeam, NIT Raipur</small>
+            <small>Developed By : WeTeam, NIT Raipur 2018</small>
         </div>
-</footer>
+      </footer>
       
       
 
