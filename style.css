@@ -4,26 +4,37 @@
     font-size: 20px;
 }
 #map{
-    height: 600px;
-    width: 55%;
-    margin-left: 50px;
-    float: left;
+    height: 20em;
+    width: 30em;
+    margin-left: auto;
+    margin-right:auto;
 }
 
 #searchplace{
-    width: 200px;
+    width:25em;
 }
-#searchbox,#SE,#NW{
+#searchbox{
+    text-align: center;
+    padding:2em;
+}
+#SE,#NW{
     text-align: center;
 }
 #searchbutton{
-    width: 120px;
+    text-align:center;
+    padding: 5px;
+    width:8em;
+    left:50%;
 }
 #btn{
     text-align: center;
+    padding: 5px;
+    width:8em;
 }
 #btn1{
     padding: 5px;
+    width:8em;
+    
 }
 #sticky-footer {
       flex-shrink: none;
@@ -62,24 +73,50 @@ a img{
 h2{
     text-align: center;
 }
-#maincontent {
+/* #maincontent {
     padding-bottom: 170px;
     padding-left: 100px;
     padding-right: 100px;
-}
+} */
 small {
-    font-size: 120%;
+    font-size: 0.75em;
 }
 #key {
     height: 60px;
     width: 600px;
     float: right;
-    margin: 30px;
-    padding-top: 20px;
+    margin: 10px;
+    padding-top: 0.5em;
+    font-size:0.75em;
+
 }
 #color {
-    background: linear-gradient(to right, #0000ff 0%, #00ffff 25%, #00ff00 50%, #ffff00 75%, #ff0000 100%);
+
+    background: linear-gradient(to right, #ff0000 0%, #f16818 25%,#ffff00 50%,#00ff00 75%, #082e08 100%);
     margin-top: 30px;
     height: 30px;
-    width: 600px;
+}
+.title {
+    padding:1em;
+    font-size:1em;
+}
+.center {
+    padding:1em;
+    display:flex;
+    justify-content: center;
+}
+.flexbox {
+    display:flex;
+    flex-wrap: wrap;
+    padding-bottom:2em;
+}
+.map-half {
+    padding:1em;
+    margin-left:auto;
+    margin-right:auto;
+}
+.search-half {
+    padding:1em;
+    margin-left:auto;
+    margin-right:auto;
 }
