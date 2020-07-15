@@ -40,7 +40,7 @@ Our team innovated, designed and created the web application called "Flood Rescu
 ### More
 1. Introduction of the Android/IOS Version
 2. Engaging audience.
-3. Aid to humanitarian organiasations.
+3. Aid to humanitarian organisations.
 
 
 ### Team
